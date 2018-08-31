@@ -14,17 +14,12 @@
   - `gulp`コマンドで開発モード
 - `_src` 開発用ファイル
   - git管理対象
-- `_styleguide` **変更不可**
-  - スタイルガイド用ファイル
-  - `overview.md`は必須
-
 
 ### Usage
 - 開発は_srcディレクトリの中で行います。
 - `gulp` コマンドで開発がスタートします。ファイルが更新されると、_devに出力されます。
   - 例）_src/index.pug → _dev/index.html
 - コンパイル時にcss、jsファイルは結合されます。デフォルトで入っているものを利用すれば、コンパイル時の書き出しの設定をコメントにして入れています。
-  - JavaScriptは必要となるモジュール用にファイルを作成し、`main.js`で`require`してください。コンパイル時`_dev/assets/js/bundle.js`に出力されます。
   - cssファイルは開発用にscssファイルが`_src/assets/css/`の中に入っています。吐き出し先は`dev/css/common.css`となり、同時にmapファイルが吐き出されます。
 - リセットに`html5doctor.com Reset Stylesheet`を使用しています。
 - リリース用ファイルは、 `gulp dist` コマンドを利用し、`_scr`内のファイルを元に、`_dist`のフォルダにHTML・CSS・JS・画像が出力されます。
@@ -73,17 +68,11 @@
     - gulp-group-css-media-queries
     - gulp-sass-glob
     - gulp-purgecss
-- webpackを用いたes6開発
-  - development mode
-    - ソースマップ出力
-  - production mode
-    - ソースマップなし
 
 ## 依存アプリケーション等
 - gulp
 - sass
 - pug
-- webpack
 - flocss
 
 ## Link

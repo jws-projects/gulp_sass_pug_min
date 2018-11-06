@@ -1,0 +1,33 @@
+// text-align
+.u-tac {
+  text-align: center;
+}
+.u-tal {
+  text-align: left;
+}
+.u-tar {
+  text-align: right;
+}
+.u-tac-sp {
+  @include tab {
+    text-align: center;
+  }
+}
+.u-tal-sp {
+  @include tab {
+    text-align: left;
+  }
+}
+.u-tar-sp {
+  @include tab {
+    text-align: right;
+  }
+}
+
+// text-decoration
+.u-tdu {
+  text-decoration: underline;
+}
+.u-tdn {
+  text-decoration: none;
+}

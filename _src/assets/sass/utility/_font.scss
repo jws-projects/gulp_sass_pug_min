@@ -1,0 +1,34 @@
+// font-size
+.u-fz{
+  &-xxl {
+    font-size: $fz-xxl;
+  }
+  &-xl {
+    font-size: $fz-xl;
+  }
+  &-l {
+    font-size: $fz-l;
+  }
+  &-m {
+    font-size: $fz-m;
+  }
+  &-s {
+    font-size: $fz-s;
+  }
+  &-ss {
+    font-size: $fz-ss;
+  }
+  &-xs {
+    font-size: $fz-xs;
+  }
+}
+
+// font-weight
+.u-fw {
+  &-b {
+    font-weight: bold;
+  }
+  &-n {
+    font-weight: normal;
+  }
+}

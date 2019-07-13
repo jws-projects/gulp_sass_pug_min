@@ -73,7 +73,7 @@ const paths = {
 /* ---------------------------------------------------------
  pug src
 --------------------------------------------------------- */
-gulp.task('pug', function() {
+gulp.task('pug', function () {
   const option = {
     pretty: true
   };
@@ -91,7 +91,7 @@ gulp.task('pug', function() {
 /* ---------------------------------------------------------
  pug dist
 --------------------------------------------------------- */
-gulp.task('pug_dist', function() {
+gulp.task('pug_dist', function () {
   const option = {
     pretty: true
   };
@@ -108,7 +108,7 @@ gulp.task('pug_dist', function() {
 /* ---------------------------------------------------------
  sass src
 --------------------------------------------------------- */
-gulp.task('sass', function() {
+gulp.task('sass', function () {
   gulp
     .src(paths.sass)
     .pipe(plumber())
@@ -124,7 +124,7 @@ gulp.task('sass', function() {
 /* ---------------------------------------------------------
  sass dist
 --------------------------------------------------------- */
-gulp.task('sass_dist', function() {
+gulp.task('sass_dist', function () {
   gulp
     .src(paths.sass)
     .pipe(plumber())
@@ -138,17 +138,17 @@ gulp.task('sass_dist', function() {
 /* ---------------------------------------------------------
  sass purgecss
 --------------------------------------------------------- */
-gulp.task('purgecss', () => {
-  return gulp
-    .src(paths.css)
-    .pipe(purgecss({ content: paths.htmlDist }))
-    .pipe(cleanCSS())
-    .pipe(gulp.dest(paths.sassDist));
-});
+// gulp.task('purgecss', () => {
+//   return gulp
+//     .src(paths.css)
+//     .pipe(purgecss({ content: paths.htmlDist }))
+//     .pipe(cleanCSS())
+//     .pipe(gulp.dest(paths.sassDist));
+// });
 /* ---------------------------------------------------------
  image src
 --------------------------------------------------------- */
-gulp.task('imagemin', function() {
+gulp.task('imagemin', function () {
   gulp
     .src(paths.image)
     .pipe(changed(paths.imageDev))
@@ -171,7 +171,7 @@ gulp.task('imagemin', function() {
 /* ---------------------------------------------------------
  image dist
 --------------------------------------------------------- */
-gulp.task('imagemin_dist', function() {
+gulp.task('imagemin_dist', function () {
   gulp
     .src(paths.image)
     // .pipe(
@@ -192,19 +192,21 @@ gulp.task('imagemin_dist', function() {
 /* ---------------------------------------------------------
   js src
 --------------------------------------------------------- */
-gulp.task('js', function() {
-  gulp.src(paths.js).pipe(gulp.dest(paths.jsDev));
+gulp.task('js', function () {
+  gulp.src(paths.js)
+    .pipe(gulp.dest(paths.jsDev))
+    .pipe(browser.reload({ stream: true }));
 });
 /* ---------------------------------------------------------
   js dist
 --------------------------------------------------------- */
-gulp.task('js_dist', function() {
+gulp.task('js_dist', function () {
   gulp.src(paths.js).pipe(gulp.dest(paths.jsDist));
 });
 /* ---------------------------------------------------------
  server
 --------------------------------------------------------- */
-gulp.task('server', function() {
+gulp.task('server', function () {
   browser({
     server: {
       baseDir: paths.pugDev,
@@ -225,13 +227,13 @@ gulp.task('server', function() {
 /* ---------------------------------------------------------
  reload
 --------------------------------------------------------- */
-gulp.task('reload', function() {
+gulp.task('reload', function () {
   browser.reload({ stream: true });
 });
 /* ---------------------------------------------------------
  clean
 --------------------------------------------------------- */
-gulp.task('clean', function() {
+gulp.task('clean', function () {
   return del.sync(['./_dist']);
 });
 /* ---------------------------------------------------------
@@ -251,22 +253,22 @@ gulp.task('cleanD', function () {
 gulp.task(
   'default',
   ['server', 'sass', 'pug', 'js', 'imagemin', 'reload'],
-  function() {
+  function () {
     gulp.watch(paths.sass, ['sass']);
     gulp.watch(paths.pug, ['pug']);
     gulp.watch(paths.image, ['imagemin']);
     gulp.watch(paths.js, ['js']);
-    gulp.watch([paths.html, paths.js], ['reload']);
+    // gulp.watch([paths.html, paths.js], ['reload']);
   }
 );
 /* ---------------------------------------------------------
  gulp dist
 --------------------------------------------------------- */
-gulp.task('dist', function(callback) {
+gulp.task('dist', function (callback) {
   return runSequence(
     'clean',
     ['sass_dist', 'pug_dist', 'js_dist', 'imagemin_dist'],
-    'purgecss',
+    // 'purgecss',
     callback
   );
 });

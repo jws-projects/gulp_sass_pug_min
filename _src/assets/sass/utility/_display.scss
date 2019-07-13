@@ -31,6 +31,18 @@
     display: inline-block;
   }
 }
+.u-db-di {
+  display: block;
+  @include tab {
+    display: inline;
+  }
+}
+.u-dib-di {
+  display: inline;
+  @include tab {
+    display: inline;
+  }
+}
 
 // inline
 .u-di {

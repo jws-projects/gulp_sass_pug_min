@@ -1,3 +1,8 @@
+@mixin llpc {
+  @media (max-width: ($llpc)) {
+    @content;
+  }
+}
 @mixin lpc {
   @media (max-width: ($lpc)) {
     @content;
@@ -5,6 +10,11 @@
 }
 @mixin pc {
   @media (max-width: ($pc)) {
+    @content;
+  }
+}
+@mixin spc {
+  @media (max-width: ($spc)) {
     @content;
   }
 }
@@ -19,7 +29,7 @@
   }
 }
 @mixin ssp {
-  @media (max-width: ($sp2)) {
+  @media (max-width: ($ssp)) {
     @content;
   }
 }
